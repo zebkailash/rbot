@@ -15,4 +15,4 @@ labels:
   - bot
   - release-bot
   - user-cont
-trigger_on_issue: true
+trigger_on_issue: false
