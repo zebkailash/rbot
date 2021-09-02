@@ -1,5 +1,9 @@
 
 # list of changes
+on: 
+  pull_request:
+    branches: 
+      - master
 changelog:
   - Example changelog entry
   - Another changelog entry
