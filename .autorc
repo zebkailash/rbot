@@ -1,0 +1,14 @@
+{
+  "plugins": [
+    "git-tag",
+    "all-contributors",
+    "conventional-commits",
+    "first-time-contributor",
+    "released"
+  ],
+  "owner": "zebkailash",
+  "repo": "rbot",
+  "name": "zebkailash",
+  "email": "kailashy@zebpay.com",
+  "onlyPublishWithReleaseLabel": true
+}
