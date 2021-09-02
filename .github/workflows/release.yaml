@@ -1,19 +1,17 @@
-name: Auto Release Workflow
-# Triggers on PR merge to PR
+name: Bump version
 on:
   pull_request:
     branches:
       - master
 jobs:
-  release:
+  build:
     runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci')"
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - run: git fetch --unshallow --tags
-      - run: npm ci
-      - name: auto release
-        uses: ./
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: "0"
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@1.26.0
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WITH_V: true
