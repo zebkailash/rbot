@@ -1,0 +1,24 @@
+name: Auto Release Workflow
+# Triggers on PR merge to PR
+on:
+  pull_request:
+    branches:
+      - master
+  jobs:
+    checkout:
+      runs-on: ubuntu-latest
+      steps:
+        - id: step1
+          run: echo "::set-output name=test::hello"
+        - id: step2
+          run: echo "::set-output name=test::world"
+    release:
+      runs-on: ubuntu-latest
+      steps:
+        - name: checkout
+          uses: actions/checkout@v2
+        - run: git fetch --unshallow --tags
+        - name: auto shipit
+          uses: terradatum/auto-action@master
+          env:
+            GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
