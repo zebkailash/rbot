@@ -1,5 +1,5 @@
-name: 'Auto Action'
-description: 'Generate releases based on semantic version labels on pull requests, and other pull request automation tools.'
+name: "Auto Action"
+description: "Generate releases based on semantic version labels on pull requests, and other pull request automation tools."
 branding:
   icon: package
   color: blue
@@ -42,13 +42,13 @@ inputs:
     default: shipit
     required: false
   repo:
-    description: 'The repo to set status on. Defaults to looking in the package definition for the platform. (global)'
+    description: "The repo to set status on. Defaults to looking in the package definition for the platform. (global)"
     required: false
   owner:
-    description: 'The owner of the GitHub repo. Defaults to reading from the package definition for the platform (global)'
+    description: "The owner of the GitHub repo. Defaults to reading from the package definition for the platform (global)"
     required: false
   github-api:
-    description: 'The url to GitHub Enterprise API (global)'
+    description: "The url to GitHub Enterprise API (global)"
     required: false
   plugins:
     description: >
@@ -56,43 +56,43 @@ inputs:
       'node_modules', then it's 'npm'. (global)
     required: false
   dry-run:
-    description: 'Report what a command will do but do not actually do anything. (changelog, release, shipit, latest, next, canary)'
-    default: 'false'
+    description: "Report what a command will do but do not actually do anything. (changelog, release, shipit, latest, next, canary)"
+    default: "false"
     required: false
   base-branch:
     description: "Branch to treat as the 'master' branch. (changelog, release, shipit, latest)"
     required: false
   from:
-    description: 'Tag to start the CHANGELOG notes from. Defaults to latest tag. (version, changelog, release)'
+    description: "Tag to start the CHANGELOG notes from. Defaults to latest tag. (version, changelog, release)"
     required: false
   only-graduate-with-release-label:
     description: >
       Make auto publish prerelease versions when merging to master. Only PRs merged with "release" label will generate a
       "latest" release. Only use this flag if you do not want to maintain a prerelease branch, and instead only want to
       use master. (shipit)
-    default: 'false'
+    default: "false"
     required: false
   only-publish-with-release-label:
     description: "Only bump version if 'release' label is on pull request. (version, shipit)"
-    default: 'true'
+    default: "true"
     required: false
   name:
-    description: 'The name to use with git. Defaults to package definitions for the platform. (changelog, release)'
+    description: "The name to use with git. Defaults to package definitions for the platform. (changelog, release)"
     required: false
   email:
-    description: 'Git email to commit with. Defaults to package definition for the platform (changelog, release)'
+    description: "Git email to commit with. Defaults to package definition for the platform (changelog, release)"
     required: false
   no-version-prefix:
     description: >
       Use the version as the tag without the 'v' prefix. WARNING: some plugins might need extra config to use this
       option (ex: npm). (changelog, release)
-    default: 'false'
+    default: "false"
     required: false
   to:
-    description: 'Git revision (tag, commit sha, ...) to start release notes from. Defaults to latest tag. (changelog)'
+    description: "Git revision (tag, commit sha, ...) to start release notes from. Defaults to latest tag. (changelog)"
     required: false
   title:
-    description: 'Override the default title of the CHANGELOG entry.'
+    description: "Override the default title of the CHANGELOG entry."
     required: false
   message:
     description: >
@@ -109,43 +109,39 @@ inputs:
       pr-status, pr-check, pr-body, comment)
     required: false
   use-version:
-    description: 'Version number to publish as. Defaults to reading from the package definition for the platform. (release)'
+    description: "Version number to publish as. Defaults to reading from the package definition for the platform. (release)"
     required: false
   pre-release:
-    description: 'Publish a prerelease. (release)'
-    default: 'false'
+    description: "Publish a prerelease. (release)"
+    default: "false"
     required: false
   build:
-    description: 'Build number to use to create the canary version. Detected in CI env. (canary)'
+    description: "Build number to use to create the canary version. Detected in CI env. (canary)"
     required: false
   force:
-    description: 'Force a canary release, even if the PR is marked to skip the release (canary)'
-    default: 'false'
+    description: "Force a canary release, even if the PR is marked to skip the release (canary)"
+    default: "false"
     required: false
   context:
-    description: 'A string label to differentiate this status from others. (pr-status, pr-check, pr-body, comment)'
+    description: "A string label to differentiate this status from others. (pr-status, pr-check, pr-body, comment)"
     required: false
   url:
-    description: 'URL to associate with this status. (pr-status, pr-check)'
+    description: "URL to associate with this status. (pr-status, pr-check)"
     required: false
   sha:
-    description: 'Specify a custom git sha. Defaults to the HEAD for a git repo in the current repository. (pr-status)'
+    description: "Specify a custom git sha. Defaults to the HEAD for a git repo in the current repository. (pr-status)"
     required: false
   state:
     description: "State of the PR. ['pending', 'success', 'error', 'failure']. (pr-status)"
     required: false
   description:
-    description: 'A description of the status. (pr-status)'
+    description: "A description of the status. (pr-status)"
     required: false
   edit:
-    description: 'Edit an old comment. (pr-body)'
-    default: 'false'
+    description: "Edit an old comment. (pr-body)"
+    default: "false"
     required: false
   delete:
-    description: 'Delete an old comment. (pr-body)'
-    default: 'false'
+    description: "Delete an old comment. (pr-body)"
+    default: "false"
     required: false
-
-runs:
-  using: node12
-  main: index.js
