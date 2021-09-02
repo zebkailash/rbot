@@ -5,20 +5,15 @@ on:
     branches:
       - master
 jobs:
-  checkout:
-    runs-on: ubuntu-latest
-    steps:
-      - id: step1
-        run: echo "::set-output name=test::hello"
-      - id: step2
-        run: echo "::set-output name=test::world"
   release:
     runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci')"
     steps:
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v2
       - run: git fetch --unshallow --tags
-      - name: auto shipit
-        uses: terradatum/auto-action@master
+      - run: npm ci
+      - name: auto release
+        uses: ./
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
